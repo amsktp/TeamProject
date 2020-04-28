@@ -191,6 +191,12 @@ String userPwd = request.getParameter("password");
 </style>
 	
 <script type="text/javascript">
+
+	window.onload = function() {
+		
+
+		
+	}
 	
 	/* security 버튼 */
 	function securitySwitchFnc() {
@@ -281,8 +287,22 @@ String userPwd = request.getParameter("password");
 		var pwdTextBox = document.getElementById('pwdText');
 		var loginFailDiv = document.getElementById('loginFail');
 		
-		var userId = "<%=userId%>";
-		var userPwd = "<%=userPwd%>";
+		var userId = '';
+		var userPwd = '';
+		
+
+			var allUrl = decodeURIComponent(location.href);
+		
+ 		if(allUrl.indexOf('=') > 0) {
+			var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+			var splitUrl = variableUrl.split('&');
+			userId = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
+			userPwd = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);
+ 			
+		} else {
+ 			userId = '';
+			userPwd = '';			 
+		}
 		
 		if(idTextBox.value == ''){
 			alert('아이디를 입력하세요');
@@ -341,7 +361,7 @@ String userPwd = request.getParameter("password");
 							 onkeyup='inputTextDeleteButtonFnc(this);'>
 							 
 						<input class="deleteTextBtn" type="button" value="X"
-							onclick='deleteTextFnc(this);'>
+							onclick='deleteTextFnc(this);' tabindex="-1">
 
 					</div>
 					<div>
@@ -350,7 +370,7 @@ String userPwd = request.getParameter("password");
 							 onblur='inputTextFocusOutFnc(this);'
 							 onkeyup='inputTextDeleteButtonFnc(this);'>			
 						<input class="deleteTextBtn" type="button" value="X"
-							onclick='deleteTextFnc(this);'>
+							onclick='deleteTextFnc(this);' tabindex="-1">
 						
 						<div id="loginFail">
 						
@@ -360,6 +380,7 @@ String userPwd = request.getParameter("password");
 					<div>
 						<input id="loginBtn" type="submit" value="로그인">
 					</div>
+				</form>
 					<div>
 						<input id="loginMaintain" type="checkbox"
 							onclick="loginMaintainFnc(this);">
@@ -367,7 +388,7 @@ String userPwd = request.getParameter("password");
 							로그인 상태 유지
 						</span>
 					</div>				
-				</form>
+				
 			</div>
 		
 			<!-- 아이디 찾기 ~ 회원가입 -->
@@ -388,7 +409,7 @@ String userPwd = request.getParameter("password");
 				<div id="signUpDiv" 
 					onmouseenter="addUnderLineFnc(this);"
 					onmouseleave="removeUnderLineFnc(this);">
-					<a id="signUp" href="#">회원가입</a>
+					<a id="signUp" href="./join.jsp">회원가입</a>
 				</div>
 	
 			</div>

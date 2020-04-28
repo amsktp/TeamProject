@@ -176,9 +176,10 @@ String passwordName = request.getParameter("passwordName");
 		
 		var allUrl = decodeURIComponent(location.href);
 		
-		if(allUrl != 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp'
-				&& allUrl != 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp#') {
-			addboardFnc();
+		if(allUrl.indexOf('=') > 0) {
+			if(allUrl.split('=').length > 3){
+				addboardFnc();
+			}
 		}
 		
 		
@@ -260,17 +261,16 @@ String passwordName = request.getParameter("passwordName");
 		
 		var allUrl = decodeURIComponent(location.href);
 		
-		var userName = "<%=userName%>";  
-		var titleName = "<%=titleName%>"; 
-		var emailName ="<%=emailName%>"; 
-		var textName = "<%=textName%>"; 
-		var passwordName = "<%=passwordName%>"; 
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+
+		var splitUrl = variableUrl.split('&');
 		
-// 		alert(userName);
-// 		alert(titleName);
-// 		alert(emailName);
-// 		alert(textName);
-// 		alert(passwordName);
+ 		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
+		var titleName = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);		
+		var emailName = splitUrl[2].substring(splitUrl[2].indexOf('=')+1);		
+		var textName = splitUrl[3].substring(splitUrl[3].indexOf('=')+1);		
+		var passwordName = splitUrl[4].substring(splitUrl[4].indexOf('=')+1);	
+		
 		
 	
 		
@@ -350,24 +350,12 @@ String passwordName = request.getParameter("passwordName");
 		var userName = thisTitleA.parentNode.parentNode.children[1].innerHTML;	
 		alert(userName);
 		
-		
 		hrefUrl = '';
-		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
+		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardView.jsp?';
 		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
 		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8");
 		
 		location.href = hrefUrl;
-		
-		
-// 	<tr class="tableContents">
-// 		<td class="contentsTitle"><a href="#">게시판 제목이 들어갑니다 어떤 제목이 들어갈까요</a></td>
-// 		<td class="contentsWriter">벤쿠버지사</td>
-// 		<td class="contentsDate">2008/02/14</td>
-// 		<td class="contentsViews">1234</td>
-// 	</tr>		
-		
-		
-		
 		
 	}
 	
