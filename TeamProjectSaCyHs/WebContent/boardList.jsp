@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+request.setCharacterEncoding("UTF-8");
+String name = request.getParameter("userName");
+
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,14 +163,36 @@
 
 // 	페이지 버튼에 onclick을 이벤트를 줌
 	window.onload = function() {
+		
 		var pageLiList = document.getElementsByClassName('numberBtnList');
 		for (var i = 1; i < pageLiList.length - 1; i++) {
 			pageLiList[i].addEventListener('click', function() {clickPageNum(this);});
 		}
 		
-		if(location.href != 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?') {
+		var allUrl = decodeURIComponent(location.href);
+		
+		if(allUrl != 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp'
+				&& allUrl != 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp#') {
 			addboardFnc();
 		}
+		
+		
+		/* 페이지 설정 */
+		var pageAList = document.getElementsByClassName('numberBtn');
+		var pageLiList = document.getElementsByClassName('numberBtnList');
+		
+		pageAList[1].style.color = 'red';
+		pageLiList[1].style.borderColor = '#000000';
+		
+		
+		/* 제목 누르면 이동 */
+		
+		var titleName = document.getElementsByClassName('contentsTitle');
+		
+		for (var i = 0; i < titleName.length; i++) {
+			titleName[i].getElementsByTagName('a')[0].addEventListener('click', function() {titleClickFnc(this);})
+		}
+		
 	}
 	
 // 	페이지 버튼 클릭 시 보더와 칼라가 바뀌는 함수
@@ -185,12 +213,6 @@
 		
 		var pageAList = document.getElementsByClassName('numberBtn');
 		var pageLiList = document.getElementsByClassName('numberBtnList');
-		
-		alert(pageAList[1].innerHTML)
-		
-		alert(pageAList[1].style.color);
-		pageAList[1].style.color = 'red';
-		alert(pageAList[1].style.color);
 		
 		for (var i = 1; i < pageLiList.length - 1; i++) {
 			if(pageAList[i].style.color == 'red'){
@@ -233,17 +255,18 @@
 		
 		var allUrl = decodeURIComponent(location.href);
 		
-		alert(allUrl);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+
+		var splitUrl = variableUrl.split('&');
+		var userName = "<%=name%>";  
 		
-		var splitUrl = allUrl.split('&');
+		alert(userName);
 		
-		allUrl = location.href.substring(location.href.indexOf('?')+1);
-		
-		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
+// 		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
 		var titleName = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);		
 		var emailName = splitUrl[2].substring(splitUrl[2].indexOf('=')+1);		
 		var textName = splitUrl[3].substring(splitUrl[3].indexOf('=')+1);		
-		var passwordName = splitUrl[4].substring(splitUrl[4].indexOf('=')+1);		
+		var passwordName = splitUrl[4].substring(splitUrl[4].indexOf('=')+1);		//ㅋㅋ
 		
 // 		alert(userName);
 // 		alert(titleName);
@@ -322,12 +345,35 @@
 // 			<td class="contentsDate">2008/02/14</td>
 // 			<td class="contentsViews">1234</td>
 // 		</tr>	
+	}
+	
+	function titleClickFnc(thisTitleA) {
+		
+		var titleName = thisTitleA.innerHTML;
+		
+		var userName = thisTitleA.parentNode.parentNode.children[1].innerHTML;	
+		alert(userName);
+		
+		
+		hrefUrl = '';
+		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
+		hrefUrl += 'userName=' + userName + '&';
+		hrefUrl += 'titleName=' + titleName;
+		
+		location.href = hrefUrl
+		
+		
+// 	<tr class="tableContents">
+// 		<td class="contentsTitle"><a href="#">게시판 제목이 들어갑니다 어떤 제목이 들어갈까요</a></td>
+// 		<td class="contentsWriter">벤쿠버지사</td>
+// 		<td class="contentsDate">2008/02/14</td>
+// 		<td class="contentsViews">1234</td>
+// 	</tr>		
 		
 		
 		
 		
 	}
-	
 	
 </script>
 
