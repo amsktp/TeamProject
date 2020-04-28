@@ -628,7 +628,7 @@
 		<div id='container'>
 			<!-- joinForm start -->
 			<div id='joinForm'>
-				<form action="" onsubmit="return checkRequiredFnc();">
+				<form action="./login.jsp" onsubmit="return checkRequiredFnc();">
 					<h2 id='pageTitle'>가입 정보 입력하기</h2>
 					<!-- 아이디 start -->
 					<div class='formTagSectors required'>
