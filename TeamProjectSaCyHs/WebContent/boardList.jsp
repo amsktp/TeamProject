@@ -352,10 +352,10 @@ String passwordName = request.getParameter("passwordName");
 		
 		hrefUrl = '';
 		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
-		hrefUrl += 'userName=' + userName + '&';
-		hrefUrl += 'titleName=' + titleName;
+		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
+		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8");
 		
-		location.href = hrefUrl
+		location.href = hrefUrl;
 		
 		
 // 	<tr class="tableContents">
