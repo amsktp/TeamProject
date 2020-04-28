@@ -56,11 +56,9 @@
 window.onload = function() {
 	
 	var allUrl = decodeURIComponent(location.href);
-	
-	if(allUrl.indexOf('=') > 0) {
-		if(allUrl.split('=').length > 3){
-			viewCheck();
-		}
+
+	if (allUrl != 'http://localhost:8090/TeamProjectSaCyHs/boardView.jsp?') {
+		viewCheck();
 	}
 }
 
