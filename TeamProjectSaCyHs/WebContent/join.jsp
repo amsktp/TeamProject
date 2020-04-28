@@ -620,7 +620,7 @@
 		<!-- header start -->
 		<header>
 			<h1 id='logo'>
-				<a href="#"><img alt="세상을 읽다, zum" src="./img/logo.png"></a>
+				<a href="#"><img alt="세상을 읽다, zum" src="./img/logo_muz2.png"></a>
 			</h1>
 		</header>
 		<!-- //header end -->
