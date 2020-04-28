@@ -14,10 +14,12 @@ String passwordName = request.getParameter("passwordName");
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>게시판 목록</title>
 
 <style type="text/css">
-	
+	body {
+		margin: 0px;
+	}
 	
 	.clearfix:after {
 		display: block;
@@ -44,17 +46,16 @@ String passwordName = request.getParameter("passwordName");
 		color : black;
 	}
 	
+	/* header */
 	#header {
-		height: 52px;
+		height: 100px;
 		background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
-		padding-top: 28px;
+		padding-top: 35px;
+		box-sizing: border-box;
 		text-align: center;
-		padding-bottom : 30px;
 	}
-	
 	#logoImg {
-		width:222px;
-		height:41px;
+		width: 222px;
 	}
 	
 	#mainContents {
@@ -381,7 +382,7 @@ String passwordName = request.getParameter("passwordName");
 	
 	<!-- 헤더 -->
 	<div id="header">
-		<img id="logoImg" src="./img/logo.jpg">
+		<a href="./login.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
 	</div>
 
 	<!-- 메인 -->
