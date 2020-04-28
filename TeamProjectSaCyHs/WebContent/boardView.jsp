@@ -52,7 +52,19 @@
 	}
 </style>	
 <script type="text/javascript">
-function writeCheck() { 
+
+window.onload = function() {
+	
+	var allUrl = decodeURIComponent(location.href);
+	
+	if(allUrl.indexOf('=') > 0) {
+		if(allUrl.split('=').length > 3){
+			viewCheck();
+		}
+	}
+}
+
+function viewCheck() { 
 	
 	var nameId = document.getElementById('nameValue'); 
 	var titleId = document.getElementById('titleValue'); 
@@ -60,49 +72,19 @@ function writeCheck() {
 	var textId = document.getElementById('textValue'); 
 	var passwordId = document.getElementById('passwordValue'); 
 	
-// 	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' 
-// 		nameId.name + '=' + nameId.value + '&' + titleId.name + '=' + titleId.value;
-// 	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' +
-// 		nameId.name + '=' + encodeURI(nameId.value , "UTF-8") + '&' + 
-// 		titleId.name + '=' + encodeURI(titleId.value , "UTF-8") + '&' +
-// 		emailId.name + '=' + encodeURI(emailId.value , "UTF-8") + '&' +
-// 		textId.name + '=' + encodeURI(textId.value , "UTF-8") + '&' +
-// 		passwordId.name + '=' + encodeURI(passwordId.value , "UTF-8");
+	var allUrl = decodeURIComponent(location.href);
 	
-	//이름 유효성 검사
-	if(nameId.value == '') {
-		alert("이름을 적어주세요");
-		return false;
-	} 
-	//제목 유효성 검사
-	if(titleId.value == '') { 
-		alert("제목을 적어주세요"); 
-		return false;
-	}
-	//이메일 유효성 검사
-	if(emailId.value == '') { 
-		alert("이메일을 적어주세요"); 
-		return false;
-	}
-	//내용 유효성 검사
-	if(textId.value == '') { 
-		alert("내용을 적어주세요"); 
-		return false;
-	} 
-	//비밀번호 유효성 검사
-	if(passwordId.value == '') { 
-		alert("비밀번호를 적어주세요"); 
-		return false;
-	}
-	//비밀번호 조건
-	if (passwordId.value.length < 4) {
-		alert("비밀번호를 4자이상으로 적어주세요 ");
-		return false;
-	}else if (passwordId.value.length > 8) {
-		alert("비밀번호를 8자 이하로 적어주세요");
-		return false;
-	}
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+
+	var splitUrl = variableUrl.split('&');
 	
+	var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
+	var titleName = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);
+	
+	nameId.value = userName;
+	titleId.value = titleName;
+	emailId.value = 'jsc9285@gmail.com';
+	textId.value = '하기실타';
 }
 
 </script>
@@ -120,7 +102,7 @@ function writeCheck() {
 	<!-- 본문 부분 -->
 	<div id='contentId'>
 		<p>글쓰기</p>
-		<form action="./boardList.jsp" onsubmit="return writeCheck();">
+		<form action="./boardList.jsp">
 			<table>
 				<tr>
 					<td class='topBottom' colspan="2" style="text-align: right;">
@@ -158,19 +140,9 @@ function writeCheck() {
 					</td>
 				</tr>
 				<tr>
-					<td class='titleBox'>비밀번호</td>
-					<td class='textBox'>
-						<input id='passwordValue' type="password" placeholder="4자 이상, 8자 이하"
-							 name='passwordName' style="float: left; width: 120px;">
-					</td>
-				</tr>
-				<tr>
 					<td class='topBottom' colspan="2" style="background-color: #5CD1E5;">
-						<a>
-							<input type="submit" class='boardBtn' value="글쓰기"> 
-						</a>
 						<a href="./board.jsp">
-							<input type="button" class='boardBtn' value="다시작성">
+							<input type="button" class='boardBtn' value="수정">
 						</a>
 						<a href="./boardList.jsp">
 							<input type="button" class='boardBtn' value="목록보기">
