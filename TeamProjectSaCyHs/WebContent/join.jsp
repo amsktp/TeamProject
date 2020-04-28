@@ -28,21 +28,15 @@
 	}
 	
 	/* header */
-	header {
+	#header {
 		height: 100px;
-		background: #ddd;
-		padding-top: 28px;
+		background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
+		padding-top: 35px;
 		box-sizing: border-box;
 		text-align: center;
-		background: url('./img/header_bg.jpg') no-repeat center;
-		background-size: cover;
 	}
-	#logo {
+	#logoImg {
 		width: 222px;
-		margin: 0px auto;
-	}
-	#logo img {
-		width: 100%;
 	}
 	
 	/* container */
@@ -618,11 +612,9 @@
 
 	<div id='wrap'>
 		<!-- header start -->
-		<header>
-			<h1 id='logo'>
-				<a href="#"><img alt="세상을 읽다, zum" src="./img/logo_muz2.png"></a>
-			</h1>
-		</header>
+		<div id="header">
+			<a href="./login.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+		</div>
 		<!-- //header end -->
 		
 		<div id='container'>
