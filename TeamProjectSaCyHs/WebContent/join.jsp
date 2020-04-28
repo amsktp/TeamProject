@@ -530,10 +530,16 @@
 	
 	/* 생년원일 확인 */
 	function checkDOBFnc(str) {
+		var year = document.getElementById('selectYear');
+		var month = document.getElementById('mnth');
+		var day = document.getElementById('day');
+		
 		if(str.value == '') {
 			str.parentNode.parentNode.classList.add('alert1');
-			str.parentNode.parentNode.classList.remove('checked');
 			return false;
+		}
+		if(year.value != '' && mnth.value != '' && day.value == ''){
+			day.parentNode.parentNode.classList.remove('alert1');
 		}
 	}
 	/* 미성년자 확인 */
