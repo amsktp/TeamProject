@@ -26,6 +26,9 @@
 	li {
 		list-style-type: none;
 	}
+	.required.checked input:focus,.required.checked input:active {
+		background-color: none !important;
+	}
 	
 	/* header */
 	#header {
@@ -76,8 +79,8 @@
 		top: 3px;
 		width: 30px;
 		height: 30px;
-		background: url('./img/icon_alert_.png') no-repeat center;
-		background-size: 18px;
+		background: url('./img/icon_alert2.png') no-repeat center;
+		background-size: 30px;
 	}
 	.inputTextWrap {
 		position: relative;
@@ -87,8 +90,8 @@
 	}
 	.required.checked .inputTextWrap:after {
 		display: block;
-		background-image:url('./img/icon_chk.jpg');
-		background-size: 25px;
+		background-image:url('./img/icon_chk2.png');
+		background-size: 28px;
 	}
 	.required.checked .inputText {
 		background-color: #fff;
@@ -445,6 +448,8 @@
 			email.focus();
 			return false;
 		}
+		
+		alert('회원가입이 완료 되었습니다.');
 	}	
 	
 	/* 아이디 확인 */
