@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
-String name = request.getParameter("userName");
+String userName = request.getParameter("userName");
+String titleName = request.getParameter("titleName");
+String emailName = request.getParameter("emailName");
+String textName = request.getParameter("textName");
+String passwordName = request.getParameter("passwordName");
 
 %>    
 
@@ -255,18 +259,11 @@ String name = request.getParameter("userName");
 		
 		var allUrl = decodeURIComponent(location.href);
 		
-		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
-
-		var splitUrl = variableUrl.split('&');
-		var userName = "<%=name%>";  
-		
-		alert(userName);
-		
-// 		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
-		var titleName = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);		
-		var emailName = splitUrl[2].substring(splitUrl[2].indexOf('=')+1);		
-		var textName = splitUrl[3].substring(splitUrl[3].indexOf('=')+1);		
-		var passwordName = splitUrl[4].substring(splitUrl[4].indexOf('=')+1);		//ㅋㅋ
+		var userName = "<%=userName%>";  
+		var titleName = "<%=titleName%>"; 
+		var emailName ="<%=emailName%>"; 
+		var textName = "<%=textName%>"; 
+		var passwordName = "<%=passwordName%>"; 
 		
 // 		alert(userName);
 // 		alert(titleName);
@@ -279,8 +276,6 @@ String name = request.getParameter("userName");
 		var mainTable = document.getElementById('mainTable');
 		
 		var boardTbody = mainTable.children[0];
-		
-		alert(boardTbody.children[10]);
 		
 		boardTbody.removeChild(boardTbody.children[10]);
 		
@@ -319,7 +314,7 @@ String name = request.getParameter("userName");
 		var month = today.getMonth() + 1;  // 월
 		var date = today.getDate();  // 날짜
 		
-		var todayDate = year + '-' + ((month<10)?'0' + month: month) + '-' + date;
+		var todayDate = year + '/' + ((month<10)?'0' + month: month) + '/' + date;
 		
 		var newDateTd = document.createElement('td');
 		newDateTd.setAttribute('class', 'contentsDate');
@@ -357,10 +352,10 @@ String name = request.getParameter("userName");
 		
 		hrefUrl = '';
 		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
-		hrefUrl += 'userName=' + userName + '&';
-		hrefUrl += 'titleName=' + titleName;
+		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
+		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8");
 		
-		location.href = hrefUrl
+		location.href = hrefUrl;
 		
 		
 // 	<tr class="tableContents">
@@ -519,7 +514,9 @@ String name = request.getParameter("userName");
 				</li>
 			</ol>
 		
-			<input id="writeBtn" type="button" value="글쓰기">
+			<a href="./board.jsp">
+				<input id="writeBtn" type="button" value="글쓰기">
+			</a>
 		</div>
 		
 	</div>
