@@ -11,11 +11,16 @@
 		text-align: center;
 		margin: auto;
 	}
-	#boardHeader {
-		 background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
-		 height: 100px;
-		 line-height: 110px;
-		 font-size: 30px;
+	#header {
+		height: 100px;
+		background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
+		padding-top: 35px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+
+	#logoImg {
+		width:222px;
 	}
 	#logoutContent {
 		width: 1024px;
@@ -34,10 +39,8 @@
 </head>
 
 <body>
-	<div id='boardHeader'>
-		<a href="" style="text-decoration: none;">
-			<img src="./zum.PNG" alt='ZUM' width="222px" height="41px" style="line-height: 41px;">
-		</a>
+	<div id="header">
+		<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
 	</div>
 	
 	<div id='logoutContent'>

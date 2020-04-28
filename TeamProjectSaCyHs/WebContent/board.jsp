@@ -6,6 +6,10 @@
 	<meta charset="UTF-8">
 	<title>게시물 작성</title>
 <style type="text/css">
+	body {
+		margin: 0px;
+	}
+	
 	table, tr, td {
 		border: 1px solid black;
 		border-collapse: collapse;
@@ -33,11 +37,16 @@
 	.boardBtn:active {
 	  color: #0054FF;
 	}
-	#boardHeader {
-		 background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
-		 height: 100px;
-		 line-height: 110px;
-		 font-size: 30px;
+	#header {
+		height: 100px;
+		background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
+		padding-top: 35px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+
+	#logoImg {
+		width:222px;
 	}
 	.topBottom {
 		background-color: #5CD1E5;
@@ -111,10 +120,8 @@ function writeCheck() {
 
 <body>
 		<!-- 헤더 부분 -->
-	<div id='boardHeader'>
-		<a href="" style="text-decoration: none;">
-			<img src="./zum.PNG" alt='ZUM' width="222px" height="41px" style="line-height: 41px;">
-		</a>
+<div id="header">
+		<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
 	</div>
 
 	<!-- 본문 부분 -->
