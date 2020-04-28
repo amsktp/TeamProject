@@ -8,6 +8,13 @@
 
 <style type="text/css">
 	
+	
+	.clearfix:after {
+		display: block;
+		content: '';
+		clear: both;
+	}
+	
 	table {
 		border-top: 2px solid #B0B0B0;
 		border-bottom: 2px solid #A0A0A0;
@@ -127,7 +134,11 @@
 	}
 
 	#pageMove {
-		margin : 20px 230px 0px 230px;
+		margin : 20px 50px 0px 230px;
+	}
+	
+	#writeBtn {
+		float: right;
 	}
 	
 </style>	
@@ -260,8 +271,8 @@
 			
 		<!-- 페이지 넘기기 -->
 		
-		<div id="pageMove">
-			<ol id="numberMove" >
+		<div id="pageMove" class="clearfix">
+			<ol id="numberMove">
 				<li class="numberBtnList"><a id="beforeBtn" class="numberBtn" href="#">&lt; 이전</a></li>
 				<li class="numberBtnList"><a class="numberBtn" href="#">1</a></li>
 				<li class="numberBtnList"><a class="numberBtn" href="#">2</a></li>
@@ -275,7 +286,10 @@
 				<li class="numberBtnList"><a class="numberBtn" href="#">10</a></li>
 				<li class="numberBtnList"><a id="nextBtn" class="numberBtn" href="#">다음 &gt;</a></li>
 			</ol>
+		
+			<input id="writeBtn" type="button" value="글쓰기">
 		</div>
+		
 	</div>
 	
 </div>
