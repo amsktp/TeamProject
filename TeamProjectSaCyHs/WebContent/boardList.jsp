@@ -231,7 +231,7 @@
 	
 	function addboardFnc() {
 		
-		var allUrl = String(location.href);
+		var allUrl = decodeURIComponent(location.href);
 		
 		alert(allUrl);
 		
@@ -245,20 +245,83 @@
 		var textName = splitUrl[3].substring(splitUrl[3].indexOf('=')+1);		
 		var passwordName = splitUrl[4].substring(splitUrl[4].indexOf('=')+1);		
 		
-		alert(userName);
-		alert(titleName);
-		alert(emailName);
-		alert(textName);
-		alert(passwordName);
-
+// 		alert(userName);
+// 		alert(titleName);
+// 		alert(emailName);
+// 		alert(textName);
+// 		alert(passwordName);
+		
+	
 		
 		var mainTable = document.getElementById('mainTable');
 		
-		var boardTr = mainTable.children;
+		var boardTbody = mainTable.children[0];
+		
+		alert(boardTbody.children[10]);
+		
+		boardTbody.removeChild(boardTbody.children[10]);
+		
+		var boardTr = boardTbody.children;
+		
+		var newTr = document.createElement('tr');
+		newTr.setAttribute('class', 'tableContents');
+		
+		/* 제목 */
+		
+		var newTitleTd = document.createElement('td');
+		newTitleTd.setAttribute('class', 'contentsTitle');
+		
+		var newATag = document.createElement('a');
+		newATag.setAttribute('href', '#');
+		newTitleTd.appendChild(newATag);
+		
+		newATag.innerHTML = titleName;
+		
+		newTr.appendChild(newTitleTd);
+		
+		/* 작성자 */
+		
+		var newWriterTd = document.createElement('td');
+		newWriterTd.setAttribute('class', 'contentsWriter');
+		
+		newWriterTd.innerHTML = userName;
+		
+		newTr.appendChild(newWriterTd);
 		
 		
+		/* 날짜 */
 		
+		var today = new Date();   
+		var year = today.getFullYear(); // 년도
+		var month = today.getMonth() + 1;  // 월
+		var date = today.getDate();  // 날짜
 		
+		var todayDate = year + '-' + ((month<10)?'0' + month: month) + '-' + date;
+		
+		var newDateTd = document.createElement('td');
+		newDateTd.setAttribute('class', 'contentsDate');
+		
+		newDateTd.innerHTML = todayDate;
+		
+		newTr.appendChild(newDateTd);
+		
+		/* 조회수 */
+		
+		var newViewsTd = document.createElement('td');
+		newViewsTd.setAttribute('class', 'contentsViews');
+		
+		newViewsTd.innerHTML = '조회수';
+		
+		newTr.appendChild(newViewsTd);
+		
+		boardTbody.insertBefore(newTr, boardTbody.children[1]);
+		
+// 		<tr class="tableContents">
+// 			<td class="contentsTitle"><a href="#">게시판 제목이 들어갑니다 어떤 제목이 들어갈까요</a></td>
+// 			<td class="contentsWriter">벤쿠버지사</td>
+// 			<td class="contentsDate">2008/02/14</td>
+// 			<td class="contentsViews">1234</td>
+// 		</tr>	
 		
 		
 		

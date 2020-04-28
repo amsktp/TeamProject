@@ -217,8 +217,7 @@
 		}
 	}
 	
-	/* 글자가 쳐질때마다 */
-
+	/* 글자가 쳐질때마다 X를 띄우기*/
 	function inputTextDeleteButtonFnc(inputText) {
 		if(inputText.value != '') {
 			inputText.parentNode.children[1].style.display = 'inline-block';
@@ -234,7 +233,6 @@
 	}
 	
 	/* 로그인 유지 체크박스 */
-	
 	function loginMaintainFnc(loginMaintainCheckBox) {
 		var onOffSwitch = document.getElementById('securityOnOff');
 		
@@ -247,6 +245,7 @@
 		}
 	}
 	
+	/* 다른 로그인 버튼에 마우스 올렸을 때 테두리 변경 */
 	function otherLoginFocusOnFnc(otherLoginBtn) {
 
 		if(otherLoginBtn.id == 'fbLoginBtn') {
@@ -269,7 +268,6 @@
 		var idTextBox = document.getElementById('idText');
 		var pwdTextBox = document.getElementById('pwdText');
 		var loginFailDiv = document.getElementById('loginFail');
-		
 		
 		if(idTextBox.value == ''){
 			alert('아이디를 입력하세요');
