@@ -317,7 +317,16 @@
 			loginFailDiv.innerHTML = '└ 아이디 혹은 비밀번호가 일치하지 않습니다.';
 			idTextBox.value = '';
 			pwdTextBox.value = '';
-
+			
+			pwdTextBox.parentNode.children[1].style.display = 'none';
+			idTextBox.parentNode.children[1].style.display = 'none';
+			
+			pwdTextBox.style.backgroundColor = '#F8F8F8';
+			idTextBox.style.backgroundColor = '#F8F8F8';
+			
+			idTextBox.placeholder = '아이디 입력';
+			pwdTextBox.placeholder = '비밀번호 입력';
+			
 			return false;
 		}
 		
@@ -358,7 +367,7 @@
 			
 			<!-- 아이디 입력 ~ 로그인 상태 유지 -->
 			<div>
-				<form id="loginForm" action="" onsubmit="return loginBtnClickFnc();">
+				<form action="./boardList.jsp" onsubmit="return loginBtnClickFnc();">
 					<div>
 						<input id="idText" type="text" placeholder="아이디 입력" name="id"
 							 onfocus='inputTextFocusOnFnc(this);'
