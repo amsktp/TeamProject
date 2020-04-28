@@ -46,6 +46,19 @@ String passwordName = request.getParameter("passwordName");
 		color : black;
 	}
 	
+	
+	
+	#logoutBtn {
+		border:none;
+		background-color: #384DD0;
+		font-size: 20px;
+		float: right;
+		margin-right: 100px;
+		cursor: pointer;
+		color: white;
+		font-weight: bold;
+	}
+	
 	/* header */
 	#header {
 		height: 100px;
@@ -53,9 +66,12 @@ String passwordName = request.getParameter("passwordName");
 		padding-top: 35px;
 		box-sizing: border-box;
 		text-align: center;
+		
 	}
+	
 	#logoImg {
 		width: 222px;
+		margin-left : 200px;
 	}
 	
 	#mainContents {
@@ -181,7 +197,6 @@ String passwordName = request.getParameter("passwordName");
 				addboardFnc();
 			}
 		}
-		
 		
 		/* 페이지 설정 */
 		var pageAList = document.getElementsByClassName('numberBtn');
@@ -329,7 +344,7 @@ String passwordName = request.getParameter("passwordName");
 		var newViewsTd = document.createElement('td');
 		newViewsTd.setAttribute('class', 'contentsViews');
 		
-		newViewsTd.innerHTML = '조회수';
+		newViewsTd.innerHTML = '1234';
 		
 		newTr.appendChild(newViewsTd);
 		
@@ -348,12 +363,29 @@ String passwordName = request.getParameter("passwordName");
 		var titleName = thisTitleA.innerHTML;
 		
 		var userName = thisTitleA.parentNode.parentNode.children[1].innerHTML;	
-		alert(userName);
 		
 		hrefUrl = '';
 		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardView.jsp?';
 		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
 		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8");
+		
+		location.href = hrefUrl;
+		
+	}
+	
+	
+	function logoutFnc() {
+		
+		
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		
+		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);	
+		
+		hrefUrl = '';
+		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/logout.jsp?';
+		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
 		
 		location.href = hrefUrl;
 		
@@ -370,7 +402,8 @@ String passwordName = request.getParameter("passwordName");
 	
 	<!-- 헤더 -->
 	<div id="header">
-		<a href="./login.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+		<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+		<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
 	</div>
 
 	<!-- 메인 -->

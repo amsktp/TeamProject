@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
-request.setCharacterEncoding("UTF-8");
-
-String userId = request.getParameter("id");
-String userPwd = request.getParameter("password");
-
-%>
-    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,8 +185,6 @@ String userPwd = request.getParameter("password");
 
 	window.onload = function() {
 		
-
-		
 	}
 	
 	/* security 버튼 */
@@ -229,9 +218,18 @@ String userPwd = request.getParameter("password");
 		inputText.style.backgroundColor = '#F8F8F8';
 
 		if(inputText.id == 'idText') {
-			inputText.placeholder = '아이디 입력';			
+			if(inputText.value == ''){
+				inputText.placeholder = '아이디 입력';			
+			} else {
+				inputText.style.backgroundColor = '#FFFFFF';
+			}
 		} else {
-			inputText.placeholder = '비밀번호 입력';			
+			if(inputText.value == ''){
+				inputText.placeholder = '비밀번호 입력';			
+			} else {
+				inputText.style.backgroundColor = '#FFFFFF';
+			}
+						
 		}
 	}
 	
@@ -290,12 +288,12 @@ String userPwd = request.getParameter("password");
 		var userId = '';
 		var userPwd = '';
 		
-
-			var allUrl = decodeURIComponent(location.href);
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		
 		
  		if(allUrl.indexOf('=') > 0) {
-			var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
-			var splitUrl = variableUrl.split('&');
 			userId = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
 			userPwd = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);
  			
@@ -304,20 +302,27 @@ String userPwd = request.getParameter("password");
 			userPwd = '';			 
 		}
 		
+ 		
 		if(idTextBox.value == ''){
 			alert('아이디를 입력하세요');
 			idTextBox.focus();
+
 			return false;
 		} else if(pwdTextBox.value == '') {
 			alert('비밀번호를 입력하세요');
 			pwdTextBox.focus();
+
 			return false;
 		} else if(idTextBox.value != userId || pwdTextBox.value != userPwd) {
 			loginFailDiv.innerHTML = '└ 아이디 혹은 비밀번호가 일치하지 않습니다.';
 			idTextBox.value = '';
 			pwdTextBox.value = '';
+
 			return false;
 		}
+		
+
+
 		
 	}
 	
@@ -353,7 +358,7 @@ String userPwd = request.getParameter("password");
 			
 			<!-- 아이디 입력 ~ 로그인 상태 유지 -->
 			<div>
-				<form action="./boardList.jsp" onsubmit="return loginBtnClickFnc();">
+				<form id="loginForm" action="" onsubmit="return loginBtnClickFnc();">
 					<div>
 						<input id="idText" type="text" placeholder="아이디 입력" name="id"
 							 onfocus='inputTextFocusOnFnc(this);'
