@@ -60,8 +60,14 @@ function writeCheck() {
 	var textId = document.getElementById('textValue'); 
 	var passwordId = document.getElementById('passwordValue'); 
 	
-	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' 
-		nameId.name + '=' + nameId.value + '&' + titleId.name + '=' + titleId.value;
+// 	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' 
+// 		nameId.name + '=' + nameId.value + '&' + titleId.name + '=' + titleId.value;
+	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' +
+		nameId.name + '=' + encodeURI(nameId.value , "UTF-8") + '&' + 
+		titleId.name + '=' + encodeURI(titleId.value , "UTF-8") + '&' +
+		emailId.name + '=' + encodeURI(emailId.value , "UTF-8") + '&' +
+		textId.name + '=' + encodeURI(textId.value , "UTF-8") + '&' +
+		passwordId.name + '=' + encodeURI(passwordId.value , "UTF-8");
 	
 	//이름 유효성 검사
 	if(nameId.value == '') {
