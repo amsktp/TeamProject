@@ -242,8 +242,7 @@ String passwordName = request.getParameter("passwordName");
 		}
 		
 		
-		/* 전달할 주소에 사용자 이름 넣기 */
-		
+		/* 사용자 이름 출력 */
 		var allUrl = decodeURIComponent(location.href);
 		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
 		var splitUrl = variableUrl.split('&');
@@ -334,11 +333,10 @@ String passwordName = request.getParameter("passwordName");
 		var mainTable = document.getElementById('mainTable');
 		
 		var boardTbody = mainTable.children[0];
-		
 		boardTbody.removeChild(boardTbody.children[10]);
 		
 		var boardTr = boardTbody.children;
-		
+
 		var newTr = document.createElement('tr');
 		newTr.setAttribute('class', 'tableContents');
 		
@@ -352,7 +350,6 @@ String passwordName = request.getParameter("passwordName");
 		newTitleTd.appendChild(newATag);
 		
 		newATag.innerHTML = titleName;
-		
 		newTr.appendChild(newTitleTd);
 		
 		/* 작성자 */
@@ -361,9 +358,7 @@ String passwordName = request.getParameter("passwordName");
 		newWriterTd.setAttribute('class', 'contentsWriter');
 		
 		newWriterTd.innerHTML = userName;
-		
 		newTr.appendChild(newWriterTd);
-		
 		
 		/* 날짜 */
 		
@@ -376,28 +371,19 @@ String passwordName = request.getParameter("passwordName");
 		
 		var newDateTd = document.createElement('td');
 		newDateTd.setAttribute('class', 'contentsDate');
-		
 		newDateTd.innerHTML = todayDate;
-		
+
 		newTr.appendChild(newDateTd);
 		
 		/* 조회수 */
 		
 		var newViewsTd = document.createElement('td');
 		newViewsTd.setAttribute('class', 'contentsViews');
-		
 		newViewsTd.innerHTML = '1234';
 		
 		newTr.appendChild(newViewsTd);
-		
 		boardTbody.insertBefore(newTr, boardTbody.children[1]);
 		
-// 		<tr class="tableContents">
-// 			<td class="contentsTitle"><a href="#">게시판 제목이 들어갑니다 어떤 제목이 들어갈까요</a></td>
-// 			<td class="contentsWriter">벤쿠버지사</td>
-// 			<td class="contentsDate">2008/02/14</td>
-// 			<td class="contentsViews">1234</td>
-// 		</tr>	
 	}
 	
 	/* 글 제목 클릭했을 경우 주소 전달 */
@@ -459,7 +445,6 @@ String passwordName = request.getParameter("passwordName");
 		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
 		
 		location.href = hrefUrl;
-		
 	}
 	
 	/* 베너 클릭했을 경우 주소 전달 */

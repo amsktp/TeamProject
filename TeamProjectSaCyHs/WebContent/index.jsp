@@ -310,8 +310,7 @@
 		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
 		var splitUrl = variableUrl.split('&');
 		
-		
-		/* 회원가입 안했을 시 로그인 불가능 */
+		/* 회원가입이 되어야만 로그인 가능 */
  		if(allUrl.indexOf('=') > 0) {
 			userId = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
 			userPwd = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);
@@ -320,16 +319,19 @@
 			userPwd = '';			 
 		}
  		
+		/* 아이디를 입력하지 않았을 경우 */
 		if(idTextBox.value == ''){
 			alert('아이디를 입력하세요');
 			idTextBox.focus();
-
 			return false;
+		
+		/* 비밀번호를 입력하지 않았을 경우 */
 		} else if(pwdTextBox.value == '') {
 			alert('비밀번호를 입력하세요');
 			pwdTextBox.focus();
-
 			return false;
+		
+		/* 아이디와 비밀번호가 틀렸을 경우 */
 		} else if(idTextBox.value != userId || pwdTextBox.value != userPwd) {
 			loginFailDiv.innerHTML = '└ 아이디 혹은 비밀번호가 일치하지 않습니다.';
 			idTextBox.value = '';
