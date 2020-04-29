@@ -81,6 +81,9 @@
 		width: 500px;
 		background-color: #A4FFFF;
 	}
+	.textBox textarea {
+		resize: none;
+	}
 </style>	
 <script type="text/javascript">
 
