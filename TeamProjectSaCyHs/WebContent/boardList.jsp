@@ -14,8 +14,8 @@ String passwordName = request.getParameter("passwordName");
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시판 목록</title>
-
+	<title>MUZ - 게시판 목록</title>
+	<link rel="shortcut icon" href="./img/favicon.ico">
 <style type="text/css">
 	body {
 		margin: 0px;

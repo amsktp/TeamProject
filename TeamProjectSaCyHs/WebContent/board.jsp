@@ -4,7 +4,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시물 작성</title>
+	<title>MUZ - 게시물 작성</title>
+	<link rel="shortcut icon" href="./img/favicon.ico">
 <style type="text/css">
 	body {
 		margin: 0px;
