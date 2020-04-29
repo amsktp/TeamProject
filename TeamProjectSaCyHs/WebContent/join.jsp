@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-
+<title>MUZ - 회원가입</title>
+<link rel="shortcut icon" href="./img/favicon.ico">
 <style type="text/css">
 	/* common */
 	body {
