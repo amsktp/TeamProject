@@ -624,14 +624,14 @@
 	<div id='wrap'>
 		<!-- header start -->
 		<div id="header">
-			<a href="./login.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+			<a href="./index.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
 		</div>
 		<!-- //header end -->
 		
 		<div id='container'>
 			<!-- joinForm start -->
 			<div id='joinForm'>
-				<form action="./login.jsp" onsubmit="return checkRequiredFnc();">
+				<form action="./index.jsp" onsubmit="return checkRequiredFnc();">
 					<h2 id='pageTitle'>가입 정보 입력하기</h2>
 					<!-- 아이디 start -->
 					<div class='formTagSectors required'>

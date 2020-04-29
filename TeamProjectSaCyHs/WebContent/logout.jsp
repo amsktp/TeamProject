@@ -45,7 +45,7 @@
 	
 	<div id='logoutContent'>
 		줌을 시작페이지로  ∣ <span id='userName'>박상아님</span>
-		<a href="./login.jsp" style="text-decoration: none; color: #FFFFFF;">로그아웃</a>
+		<a href="./index.jsp" style="text-decoration: none; color: #FFFFFF;">로그아웃</a>
 	</div>
 </body>
 </html>
