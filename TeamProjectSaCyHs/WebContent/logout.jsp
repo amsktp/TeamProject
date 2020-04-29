@@ -4,7 +4,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>로그아웃</title>
+	<title>MUZ - 로그아웃</title>
+	<link rel="shortcut icon" href="./img/favicon.ico">
 <style type="text/css">
 	div {
 /* 		width: 1024px; */

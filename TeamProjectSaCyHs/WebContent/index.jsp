@@ -5,8 +5,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>로그인</title>
-
+	<title>MUZ - 로그인</title>
+	<link rel="shortcut icon" href="./img/favicon.ico">
 <style type="text/css">
 	body {
 		margin: 0px;
