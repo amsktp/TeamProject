@@ -456,12 +456,17 @@
 			year.focus();
 			return false;
 		}
+		if(year.value != '' && mnth.value != '' && day.value != ''){
+			day.parentNode.parentNode.classList.remove('alert1');
+		}
 		
 		if(gndMale.checked == false && gndFemale.checked == false){
 			alert('성별을 선택해 주시기 바랍니다.');
 			gndMale.focus();
 			gndMale.parentNode.parentNode.classList.add('alert1');
 			return false;
+		} else{
+			gndMale.parentNode.parentNode.classList.remove('alert1');
 		}
 		
 		if(email.value.length == 0){
@@ -584,7 +589,7 @@
 		}
 	}
 	
-	/* 생년원일 확인 */
+	/* 생년월일 확인 */
 	function checkDOBFnc(str) {
 		var year = document.getElementById('selectYear');
 		var month = document.getElementById('mnth');
@@ -594,7 +599,7 @@
 			str.parentNode.parentNode.classList.add('alert1');
 			return false;
 		}
-		if(year.value != '' && mnth.value != '' && day.value == ''){
+		if(year.value != '' && mnth.value != '' && day.value != ''){
 			day.parentNode.parentNode.classList.remove('alert1');
 		}
 	}
@@ -603,6 +608,16 @@
 		if(year.value > 2006) {
 			alert('만 14세 미만으로 보호자 인증이 필요합니다.');
 			return false;
+		}
+	}
+	
+	/* 성별 확인 */
+	function checkRadioFnc() {
+		var gndMale = document.getElementById('male');
+		var gndFemale = document.getElementById('female');
+		
+		if(gndMale.checked == true || gndFemale.checked == true){
+			gndMale.parentNode.parentNode.classList.remove('alert1');
 		}
 	}
 	
@@ -845,11 +860,13 @@
 						<p class='label'>성별</p>
 						<div class='radioWrap required clearfix'>
 							<div class='genderRadio'>
-								<input type="radio" id='male' class='gnd' name="gender">
+								<input type="radio" id='male' class='gnd' name="gender"
+									onclick="checkRadioFnc();">
 								<label for='male' class='gender'>남자</label>
 							</div>
 							<div class='genderRadio'>
-								<input type="radio" id='female' class='gnd' name="gender">
+								<input type="radio" id='female' class='gnd' name="gender"
+									onclick="checkRadioFnc();">
 								<label for='female' class='gender'>여자</label>
 							</div>
 							<span class='alertMsg alertMsg1' style="clear: both;">성별을 선택해주시기 바랍니다.</span>
