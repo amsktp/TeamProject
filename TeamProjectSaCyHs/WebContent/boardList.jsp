@@ -79,6 +79,7 @@ String passwordName = request.getParameter("passwordName");
 	
 	#logoImg {
 		width: 222px;
+		cursor: pointer;
 	}
 	
 	#mainContents {
@@ -200,7 +201,7 @@ String passwordName = request.getParameter("passwordName");
 		var allUrl = decodeURIComponent(location.href);
 		
 		if(allUrl.indexOf('=') > 0) {
-			if(allUrl.split('=').length > 3){
+			if(allUrl.split('=').length > 4){
 				addboardFnc();
 			}
 		}
@@ -220,6 +221,25 @@ String passwordName = request.getParameter("passwordName");
 		for (var i = 0; i < titleName.length; i++) {
 			titleName[i].getElementsByTagName('a')[0].addEventListener('click', function() {titleClickFnc(this);})
 		}
+		
+		
+		/* 상용자 이름 넣기 */
+		
+		
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+		if(personName.indexOf('#') != -1) {
+			personName = personName.substring(0, personName.length-1);
+		}
+		
+		var userNameLabel = document.getElementById('userName');
+		
+		userNameLabel.innerHTML = personName;
+		
+		
+		
 		
 	}
 	
@@ -367,6 +387,13 @@ String passwordName = request.getParameter("passwordName");
 	
 	function titleClickFnc(thisTitleA) {
 		
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);		
+		
+		alert(personName);
+		
 		var titleName = thisTitleA.innerHTML;
 		
 		var userName = thisTitleA.parentNode.parentNode.children[1].innerHTML;	
@@ -374,8 +401,9 @@ String passwordName = request.getParameter("passwordName");
 		hrefUrl = '';
 		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardView.jsp?';
 		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
-		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8");
-		
+		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8") + '&';
+		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+				
 		location.href = hrefUrl;
 		
 	}
@@ -388,16 +416,56 @@ String passwordName = request.getParameter("passwordName");
 		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
 		var splitUrl = variableUrl.split('&');
 		
-		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);	
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+		if(personName.indexOf('#') != -1) {
+			personName = personName.substring(0, personName.length-1);
+		}
 		
 		hrefUrl = '';
 		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/logout.jsp?';
-		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
+		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
 		
 		location.href = hrefUrl;
 		
 	}
 	
+	
+	function writingFnc() {
+		
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+		if(personName.indexOf('#') != -1) {
+			personName = personName.substring(0, personName.length-1);
+		}
+		
+		hrefUrl = '';
+		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
+		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+		
+		location.href = hrefUrl;
+		
+	}
+	
+	function clickBannerFnc() {
+		
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+		if(personName.indexOf('#') != -1) {
+			personName = personName.substring(0, personName.length-1);
+		}
+		
+		hrefUrl = '';
+		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
+		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+		
+		location.href = hrefUrl;
+	}
 </script>
 
 </head>
@@ -410,8 +478,9 @@ String passwordName = request.getParameter("passwordName");
 	<!-- 헤더 -->
 	<div id="header">
 		<div id='header_in' class='clearfix'>
-			<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+			<img onclick="clickBannerFnc();" id="logoImg" src="./img/logo_muz2.png">
 			<div id='userLogout'>
+				<label id="userName"></label>
 				<img alt="사용자 아이콘" src="./img/icon_user.png">
 				<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
 			</div>
@@ -548,9 +617,7 @@ String passwordName = request.getParameter("passwordName");
 				</li>
 			</ol>
 		
-			<a href="./board.jsp">
-				<input id="writeBtn" type="button" value="글쓰기">
-			</a>
+			<input id="writeBtn" type="button" value="글쓰기" onclick="writingFnc();">
 		</div>
 		
 	</div>

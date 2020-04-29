@@ -67,6 +67,7 @@
 	}
 	
 	#logoImg {
+		cursor: pointer;
 		width: 222px;
 	}
 	
@@ -94,6 +95,19 @@ window.onload = function() {
 	if (allUrl != 'http://localhost:8090/TeamProjectSaCyHs/boardView.jsp?') {
 		viewCheck();
 	}
+	
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
+	}
+	
+	var userNameLabel = document.getElementById('userName');
+	
+	userNameLabel.innerHTML = personName;
+	
 }
 
 function viewCheck() { 
@@ -119,6 +133,87 @@ function viewCheck() {
 	textId.value = '하기실타';
 }
 
+
+function modifingFnc() {
+	
+	var modifingBtn = document.getElementsByClassName('boardBtn')[0];
+
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
+	}
+	
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+	
+}
+
+function viewListFnc() {
+	
+	var viewListBtn = document.getElementsByClassName('boardBtn')[1];
+
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
+	}
+	
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+	
+}
+
+function logoutFnc() {
+	
+	
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
+	}
+	
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/logout.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+	
+}
+
+function clickBannerFnc() {
+	
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
+	}
+	
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+}
+
 </script>
 
 </head>
@@ -127,8 +222,9 @@ function viewCheck() {
 	<!-- 헤더 부분 -->
 	<div id="header">
 		<div id='header_in' class='clearfix'>
-			<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+			<img onclick="clickBannerFnc();" id="logoImg" src="./img/logo_muz2.png">
 			<div id='userLogout'>
+				<label id="userName"></label>
 				<img alt="사용자 아이콘" src="./img/icon_user.png">
 				<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
 			</div>
@@ -177,12 +273,8 @@ function viewCheck() {
 				</tr>
 				<tr>
 					<td class='topBottom' colspan="2" style="background-color: #5CD1E5;">
-						<a href="./board.jsp">
-							<input type="button" class='boardBtn' value="수정">
-						</a>
-						<a href="./boardList.jsp">
-							<input type="button" class='boardBtn' value="목록보기">
-						</a>
+							<input onclick="modifingFnc();" type="button" class='boardBtn' value="수정">
+							<input onclick="viewListFnc();" type="button" class='boardBtn' value="목록보기">
 					</td>
 				</tr>
 			</table>

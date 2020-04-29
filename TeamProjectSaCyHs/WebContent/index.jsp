@@ -116,6 +116,11 @@
 		
 	}
 	
+	#unvisibleName {
+		display: none;
+	}
+	
+	
 	#loginFail {
 		font-size: 12px;
 		color : #B92D00;
@@ -184,6 +189,17 @@
 <script type="text/javascript">
 
 	window.onload = function() {
+		var allUrl = decodeURIComponent(location.href);
+		
+		if(allUrl.indexOf('=') > 0) {
+			var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+			var splitUrl = variableUrl.split('&');
+			var userName = splitUrl[3].substring(splitUrl[3].indexOf('=')+1);
+			
+			var userNameInput = document.getElementById('unvisibleName');
+			
+			userNameInput.children[0].value = userName;
+		}
 		
 	}
 	
@@ -390,6 +406,9 @@
 						
 						</div>
 						
+					</div>
+					<div id="unvisibleName">
+						<input type="text" value="" name="personName">
 					</div>
 					<div>
 						<input id="loginBtn" type="submit" value="로그인">

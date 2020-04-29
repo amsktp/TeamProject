@@ -35,6 +35,20 @@
 </style>	
 <script type="text/javascript">
 	
+	window.onload =function() {
+		
+		var allUrl = decodeURIComponent(location.href);
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+		var splitUrl = variableUrl.split('&');
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+		if(personName.indexOf('#') != -1) {
+			personName = personName.substring(0, personName.length-1);
+		}
+		var userName = document.getElementById('userName');
+		userName.innerHTML = personName;
+		
+	}
+	
 </script>
 
 </head>
@@ -45,7 +59,7 @@
 	</div>
 	
 	<div id='logoutContent'>
-		줌을 시작페이지로  ∣ <span id='userName'>박상아님</span>
+		줌을 시작페이지로  ∣ <span id='userName'></span>
 		<a href="./index.jsp" style="text-decoration: none; color: #FFFFFF;">로그아웃</a>
 	</div>
 </body>
