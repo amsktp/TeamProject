@@ -46,21 +46,17 @@ String passwordName = request.getParameter("passwordName");
 		color : black;
 	}
 	
+	
+	
 	#logoutBtn {
-		border: none;
-		background: none;
-		padding: 0px;
-		font-size: 14px;
+		border:none;
+		background-color: #384DD0;
+		font-size: 20px;
+		float: right;
+		margin-right: 100px;
 		cursor: pointer;
 		color: white;
-	}
-	#userLogout{
-		float: right;
-		padding-top: 2px;
-	}
-	#userLogout img{
-		width: 20px;
-		vertical-align: -4px;
+		font-weight: bold;
 	}
 	
 	/* header */
@@ -69,13 +65,13 @@ String passwordName = request.getParameter("passwordName");
 		background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
 		padding-top: 35px;
 		box-sizing: border-box;
+		text-align: center;
+		
 	}
-	#header_in {
-		width: 900px;
-		margin: 0px auto;
-	}
+	
 	#logoImg {
 		width: 222px;
+		margin-left : 200px;
 	}
 	
 	#mainContents {
@@ -86,6 +82,7 @@ String passwordName = request.getParameter("passwordName");
 	#tableHead {
 		height: 40px;
 		background-color: #F1F1F3; 
+	
 	}
 	
 	.tableContents {
@@ -405,13 +402,8 @@ String passwordName = request.getParameter("passwordName");
 	
 	<!-- 헤더 -->
 	<div id="header">
-		<div id='header_in' class='clearfix'>
-			<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
-			<div id='userLogout'>
-				<img alt="사용자 아이콘" src="./img/icon_user.png">
-				<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
-			</div>
-		</div>
+		<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+		<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
 	</div>
 
 	<!-- 메인 -->
