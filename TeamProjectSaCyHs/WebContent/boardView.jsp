@@ -19,7 +19,6 @@
 		margin: auto;
 	}
 	div {
-		text-align: center;
 		margin: auto;
 	}
 	a {
@@ -27,7 +26,7 @@
 	}
 	p {
 		font-weight: bold;
-		margin-bottom: 10px;
+		margin: 40px 0px 10px;
 	}
 	.boardBtn:visited {
 	  color: #1DDB16;
@@ -38,17 +37,38 @@
 	.boardBtn:active {
 	  color: #0054FF;
 	}
+	#logoutBtn {
+		border:none;
+		background: none;
+		font-size: 14px;
+		cursor: pointer;
+		color: white;
+	}
+	
+	/* header */
 	#header {
 		height: 100px;
 		background: -webkit-linear-gradient(left,#3faeeb,#3967d0 46%,#3846d0);
-		padding-top: 35px;
+		padding-top: 36px;
 		box-sizing: border-box;
-		text-align: center;
 	}
-
+	#header_in {
+		width: 900px;
+		margin: 0px auto;
+	}
+	#userLogout {
+		float: right;
+		padding-top: 1px;
+	}
+	#userLogout img {
+		width: 20px;
+		vertical-align: -4px;
+	}
+	
 	#logoImg {
-		width:222px;
+		width: 222px;
 	}
+	
 	.topBottom {
 		background-color: #5CD1E5;
 	} 
@@ -100,14 +120,20 @@ function viewCheck() {
 </head>
 
 <body>
-		<!-- 헤더 부분 -->
+	<!-- 헤더 부분 -->
 	<div id="header">
-		<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+		<div id='header_in' class='clearfix'>
+			<a href="./boardList.jsp"><img id="logoImg" src="./img/logo_muz2.png"></a>
+			<div id='userLogout'>
+				<img alt="사용자 아이콘" src="./img/icon_user.png">
+				<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
+			</div>
+		</div>
 	</div>
 
 	<!-- 본문 부분 -->
 	<div id='contentId'>
-		<p>글쓰기</p>
+		<p style="text-align: center;">글쓰기</p>
 		<form action="./boardList.jsp">
 			<table>
 				<tr>
