@@ -417,7 +417,7 @@
 			pwd.focus();
 			return false;
 		} else if(!(pwd.value.match(paswd))){
-			alert('8자 이상의 대·소문자, 숫자, 특수문자의 조합을 사용하세요.');
+			alert('8자 이상의 문자, 숫자, 특수문자의 조합을 사용하세요.');
 			pwd.focus();
 			return false;
 		}
@@ -710,7 +710,7 @@
 								onblur="checkPwdFnc(this);">
 						</div>
 						<span class='alertMsg alertMsg1'>비밀번호를 입력해주십시오.</span>
-						<span class='alertMsg alertMsg2'>8자 이상의 대&middot;소문자, 숫자, 특수문자의 조합을 사용하세요.</span>
+						<span class='alertMsg alertMsg2'>8자 이상의 문자, 숫자, 특수문자의 조합을 사용하세요.</span>
 					</div>
 					<!-- //비밀번호 end -->
 					<!-- 비밀번호  재확인 start -->
