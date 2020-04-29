@@ -85,6 +85,25 @@
 	.textBox textarea {
 		resize: none;
 	}
+	
+	#userName {
+      display: inline-block;
+      position: relative;
+      padding-right: 16px;
+      color: #fff;
+      font-size: 14px;
+   }
+   #userName:after {
+      display: block;
+      content: '';
+      position: absolute;
+      right: 5px;
+      top: 3px;
+      width: 1px;
+      height: 15px;
+      background: #fff;
+   }
+   
 </style>	
 <script type="text/javascript">
 
@@ -224,8 +243,8 @@ function clickBannerFnc() {
 		<div id='header_in' class='clearfix'>
 			<img onclick="clickBannerFnc();" id="logoImg" src="./img/logo_muz2.png">
 			<div id='userLogout'>
-				<label id="userName"></label>
 				<img alt="사용자 아이콘" src="./img/icon_user.png">
+				<label id="userName"></label>
 				<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
 			</div>
 		</div>
