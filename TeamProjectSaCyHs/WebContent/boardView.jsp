@@ -242,9 +242,9 @@ function clickBannerFnc() {
 		<div id='header_in' class='clearfix'>
 			<img onclick="clickBannerFnc();" id="logoImg" src="./img/logo_muz2.png">
 			<div id='userLogout'>
+				<img alt="사용자 아이콘" src="./img/icon_user.png">
 				<label id="userName"></label>
 				<input id="logoutBtn" type="button" value="로그아웃" onclick="logoutFnc();">
-				<img alt="사용자 아이콘" src="./img/icon_user.png">
 			</div>
 		</div>
 	</div>

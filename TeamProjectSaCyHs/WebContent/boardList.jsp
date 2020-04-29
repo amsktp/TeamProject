@@ -410,8 +410,6 @@ String passwordName = request.getParameter("passwordName");
 		var splitUrl = variableUrl.split('&');
 		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);		
 		
-		alert(personName);
-		
 		var titleName = thisTitleA.innerHTML;
 		
 		var userName = thisTitleA.parentNode.parentNode.children[1].innerHTML;	
