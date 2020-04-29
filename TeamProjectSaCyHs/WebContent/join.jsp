@@ -26,9 +26,6 @@
 	li {
 		list-style-type: none;
 	}
-	.required.checked input:focus,.required.checked input:active {
-		background-color: none !important;
-	}
 	
 	/* header */
 	#header {
@@ -90,7 +87,7 @@
 	}
 	.required.checked .inputTextWrap:after {
 		display: block;
-		background-image:url('./img/icon_chk2.png');
+		background-image:url('./img/icon_chk.png');
 		background-size: 28px;
 	}
 	.required.checked .inputText {
@@ -377,11 +374,39 @@
 		var gndMale = document.getElementById('male');
 		var gndFemale = document.getElementById('female');
 		
+		var nickLength = 0;
+		var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+		var korCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+		
+		//한글, 영문 길이 2,1로 바꾸기 
+		for(var i=0; i < idNm.value.length; i++){ 
+			//한글은 2, 영문은 1로 치환 
+			nick = idNm.value.charAt(i); 
+			if(escape(nick).length > 4){ 
+				nickLength += 2; 
+			} else{ 
+				nickLength += 1;
+			}
+		}
+		
 		if(idNm.value.length == 0) {
 			alert('아이디를 입력해 주시기 바랍니다.');
 			idNm.focus();
 			return false;
 		} else if(idNm.value.length > 0 && idNm.value.length < 6){
+			alert('6~12자의 영문 소문자와 숫자를 사용해주세요.');
+			idNm.focus();
+			return false;
+		} else if (idNm.value.search(/\s/) != -1){
+			alert('6~12자의 영문 소문자와 숫자를 사용해주세요.');
+			idNm.focus();
+			return false;
+			return false;
+		} else if(specialCheck.test(idNm.value)){
+			alert('6~12자의 영문 소문자와 숫자를 사용해주세요.');
+			idNm.focus();
+			return false;
+		} else if (korCheck.test(idNm.value)) {
 			alert('6~12자의 영문 소문자와 숫자를 사용해주세요.');
 			idNm.focus();
 			return false;
@@ -392,7 +417,7 @@
 			pwd.focus();
 			return false;
 		} else if(!(pwd.value.match(paswd))){
-			alert('8자 이상의 대·소문자, 숫자, 특수문자의 조합을 사용하세요.');
+			alert('8자 이상의 문자, 숫자, 특수문자의 조합을 사용하세요.');
 			pwd.focus();
 			return false;
 		}
@@ -454,6 +479,21 @@
 	
 	/* 아이디 확인 */
 	function checkIdFnc(str) {
+		var nickLength = 0;
+		var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+		var korCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+		
+		//한글, 영문 길이 2,1로 바꾸기 
+		for(var i=0; i < str.value.length; i++){ 
+			//한글은 2, 영문은 1로 치환 
+			nick = str.value.charAt(i); 
+			if(escape(nick).length>4){ 
+				nickLength += 2; 
+			} else{ 
+				nickLength += 1;
+			}
+		}
+		
 		if(str.value.length == 0) {
 			str.parentNode.parentNode.classList.add('alert1');
 			str.parentNode.parentNode.classList.remove('checked');
@@ -464,12 +504,28 @@
 			str.parentNode.parentNode.classList.remove('checked');
 			str.parentNode.parentNode.classList.remove('alert1');
 			return false;
+		} else if (str.value.search(/\s/) != -1){
+			str.parentNode.parentNode.classList.add('alert2');
+			str.parentNode.parentNode.classList.remove('checked');
+			str.parentNode.parentNode.classList.remove('alert1');
+			return false;
+		} else if(specialCheck.test(str.value)){
+			str.parentNode.parentNode.classList.add('alert2');
+			str.parentNode.parentNode.classList.remove('checked');
+			str.parentNode.parentNode.classList.remove('alert1');
+			return false;
+		} else if (korCheck.test(str.value)) {
+			str.parentNode.parentNode.classList.add('alert2');
+			str.parentNode.parentNode.classList.remove('checked');
+			str.parentNode.parentNode.classList.remove('alert1');
+			return false;
 		} else{
 			str.parentNode.parentNode.classList.add('checked');
 			str.parentNode.parentNode.classList.remove('alert1');
 			str.parentNode.parentNode.classList.remove('alert2');
 			return true;
 		}
+//		출처: https://backstreet-programmer.tistory.com/53 [글쓰는 개발자] 
 	}
 	
 	/* 비밀번호 확인 */
@@ -654,7 +710,7 @@
 								onblur="checkPwdFnc(this);">
 						</div>
 						<span class='alertMsg alertMsg1'>비밀번호를 입력해주십시오.</span>
-						<span class='alertMsg alertMsg2'>8자 이상의 대&middot;소문자, 숫자, 특수문자의 조합을 사용하세요.</span>
+						<span class='alertMsg alertMsg2'>8자 이상의 문자, 숫자, 특수문자의 조합을 사용하세요.</span>
 					</div>
 					<!-- //비밀번호 end -->
 					<!-- 비밀번호  재확인 start -->
