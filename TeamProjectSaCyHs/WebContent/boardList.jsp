@@ -54,6 +54,7 @@ String passwordName = request.getParameter("passwordName");
 		font-size: 14px;
 		cursor: pointer;
 		color: white;
+		padding: 0px;
 	}
 	
 	/* header */
