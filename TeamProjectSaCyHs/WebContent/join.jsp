@@ -487,7 +487,7 @@
 		for(var i=0; i < str.value.length; i++){ 
 			//한글은 2, 영문은 1로 치환 
 			nick = str.value.charAt(i); 
-			if(escape(nick).length > 4){ 
+			if(escape(nick).length>4){ 
 				nickLength += 2; 
 			} else{ 
 				nickLength += 1;
