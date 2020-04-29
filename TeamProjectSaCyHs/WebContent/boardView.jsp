@@ -128,6 +128,9 @@ window.onload = function() {
 	
 }
 
+
+/*  */
+
 function viewCheck() { 
 	
 	var nameId = document.getElementById('nameValue'); 
@@ -151,7 +154,7 @@ function viewCheck() {
 	textId.value = '하기실타';
 }
 
-
+/* 수정버튼 눌렀을 때 주소 전달 */
 function modifingFnc() {
 	
 	var modifingBtn = document.getElementsByClassName('boardBtn')[0];
@@ -173,6 +176,7 @@ function modifingFnc() {
 	
 }
 
+/* 목록 버튼 클릭 시 주소 전달 */
 function viewListFnc() {
 	
 	var viewListBtn = document.getElementsByClassName('boardBtn')[1];
@@ -194,6 +198,7 @@ function viewListFnc() {
 	
 }
 
+/* 로그아웃 버튼 클릭 시 주소 전달 */
 function logoutFnc() {
 	
 	
@@ -214,6 +219,7 @@ function logoutFnc() {
 	
 }
 
+/* 베너 클릭 시 주소 전달 */
 function clickBannerFnc() {
 	
 	var allUrl = decodeURIComponent(location.href);

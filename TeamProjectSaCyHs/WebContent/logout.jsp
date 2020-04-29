@@ -37,6 +37,7 @@
 	
 	window.onload =function() {
 		
+		/* 사용자 이름이 나오게끔 한다. */
 		var allUrl = decodeURIComponent(location.href);
 		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
 		var splitUrl = variableUrl.split('&');

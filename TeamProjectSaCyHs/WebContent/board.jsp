@@ -98,15 +98,6 @@ function writeCheck() {
 	var textId = document.getElementById('textValue'); 
 	var passwordId = document.getElementById('passwordValue'); 
 	
-// 	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' 
-// 		nameId.name + '=' + nameId.value + '&' + titleId.name + '=' + titleId.value;
-// 	location.href = 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?' +
-// 		nameId.name + '=' + encodeURI(nameId.value , "UTF-8") + '&' + 
-// 		titleId.name + '=' + encodeURI(titleId.value , "UTF-8") + '&' +
-// 		emailId.name + '=' + encodeURI(emailId.value , "UTF-8") + '&' +
-// 		textId.name + '=' + encodeURI(textId.value , "UTF-8") + '&' +
-// 		passwordId.name + '=' + encodeURI(passwordId.value , "UTF-8");
-	
 	//이름 유효성 검사
 	if(nameId.value == '') {
 		alert("이름을 적어주세요");
@@ -143,64 +134,65 @@ function writeCheck() {
 	
 }
 
-
-	function viewListFnc() {
-		
-		var allUrl = decodeURIComponent(location.href);
-		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
-		var splitUrl = variableUrl.split('&');
-		
-		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
-		if(personName.indexOf('#') != -1) {
-			personName = personName.substring(0, personName.length-1);
-		}
-		
-		hrefUrl = '';
-		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
-		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
-		
-		location.href = hrefUrl;
-		
-		
-	}
-
-	function reWritingFnc() {
-		
-		var allUrl = decodeURIComponent(location.href);
-		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
-		var splitUrl = variableUrl.split('&');
-		
-		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
-		if(personName.indexOf('#') != -1) {
-			personName = personName.substring(0, personName.length-1);
-		}
-		
-		hrefUrl = '';
-		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
-		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
-		
-		location.href = hrefUrl;
-		
-		
+/* 목록 클릭 시 주소 전달 */
+function viewListFnc() {
+	
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
 	}
 	
-	function clickBannerFnc() {
-		
-		var allUrl = decodeURIComponent(location.href);
-		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
-		var splitUrl = variableUrl.split('&');
-		
-		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
-		if(personName.indexOf('#') != -1) {
-			personName = personName.substring(0, personName.length-1);
-		}
-		
-		hrefUrl = '';
-		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
-		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
-		
-		location.href = hrefUrl;
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+	
+	
+}
+
+/* 다시 작성 클릭 시 주소 전달 */
+function reWritingFnc() {
+	
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
 	}
+	
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/board.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+	
+}
+
+/* 베너 클릭 시 주소 전달 */
+function clickBannerFnc() {
+	
+	var allUrl = decodeURIComponent(location.href);
+	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+	var splitUrl = variableUrl.split('&');
+	
+	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+	if(personName.indexOf('#') != -1) {
+		personName = personName.substring(0, personName.length-1);
+	}
+	
+	hrefUrl = '';
+	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
+	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
+	
+	location.href = hrefUrl;
+}
 
 </script>
 

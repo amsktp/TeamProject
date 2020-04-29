@@ -208,14 +208,23 @@ String passwordName = request.getParameter("passwordName");
 <script type="text/javascript">
 
 
-// 	페이지 버튼에 onclick을 이벤트를 줌
 	window.onload = function() {
-		
+
+
+		/* 페이지 숫자 눌렀을 때 이벤트 넣기 */
 		var pageLiList = document.getElementsByClassName('numberBtnList');
 		for (var i = 1; i < pageLiList.length - 1; i++) {
 			pageLiList[i].addEventListener('click', function() {clickPageNum(this);});
 		}
+
+		var pageAList = document.getElementsByClassName('numberBtn');
+		var pageLiList = document.getElementsByClassName('numberBtnList');
 		
+		pageAList[1].style.color = 'red';
+		pageLiList[1].style.borderColor = '#000000';
+
+		
+		/* 글쓰기 창으로부터 왔을 때 */
 		var allUrl = decodeURIComponent(location.href);
 		
 		if(allUrl.indexOf('=') > 0) {
@@ -224,25 +233,16 @@ String passwordName = request.getParameter("passwordName");
 			}
 		}
 		
-		/* 페이지 설정 */
-		var pageAList = document.getElementsByClassName('numberBtn');
-		var pageLiList = document.getElementsByClassName('numberBtnList');
-		
-		pageAList[1].style.color = 'red';
-		pageLiList[1].style.borderColor = '#000000';
-		
 		
 		/* 제목 누르면 이동 */
 		
 		var titleName = document.getElementsByClassName('contentsTitle');
-		
 		for (var i = 0; i < titleName.length; i++) {
 			titleName[i].getElementsByTagName('a')[0].addEventListener('click', function() {titleClickFnc(this);})
 		}
 		
 		
-		/* 상용자 이름 넣기 */
-		
+		/* 전달할 주소에 사용자 이름 넣기 */
 		
 		var allUrl = decodeURIComponent(location.href);
 		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
@@ -251,13 +251,9 @@ String passwordName = request.getParameter("passwordName");
 		if(personName.indexOf('#') != -1) {
 			personName = personName.substring(0, personName.length-1);
 		}
-		
 		var userNameLabel = document.getElementById('userName');
 		
 		userNameLabel.innerHTML = personName;
-		
-		
-		
 		
 	}
 	
@@ -275,6 +271,7 @@ String passwordName = request.getParameter("passwordName");
 		thisPage.children[0].style.color = 'red';
 	}
 	
+	/* 다음 페이지 눌렀을때 보더, 컬러 변경 */
 	function nextPageFnc() {
 		
 		var pageAList = document.getElementsByClassName('numberBtn');
@@ -296,6 +293,7 @@ String passwordName = request.getParameter("passwordName");
 		}
 	}
 
+	/* 이전 페이지 눌렀을 때 보더, 컬러 변경  */
 	function prePageFnc() {
 		
 		var pageAList = document.getElementsByClassName('numberBtn');
@@ -317,6 +315,7 @@ String passwordName = request.getParameter("passwordName");
 		}
 	}
 	
+	/* 글쓰기했을 경우 가장 첫줄에 해당 글 추가 */
 	function addboardFnc() {
 		
 		var allUrl = decodeURIComponent(location.href);
@@ -331,8 +330,6 @@ String passwordName = request.getParameter("passwordName");
 		var textName = splitUrl[3].substring(splitUrl[3].indexOf('=')+1);		
 		var passwordName = splitUrl[4].substring(splitUrl[4].indexOf('=')+1);	
 		
-		
-	
 		
 		var mainTable = document.getElementById('mainTable');
 		
@@ -403,6 +400,7 @@ String passwordName = request.getParameter("passwordName");
 // 		</tr>	
 	}
 	
+	/* 글 제목 클릭했을 경우 주소 전달 */
 	function titleClickFnc(thisTitleA) {
 		
 		var allUrl = decodeURIComponent(location.href);
@@ -424,9 +422,8 @@ String passwordName = request.getParameter("passwordName");
 		
 	}
 	
-	
+	/* 로그아웃 했을 경우 주소 전달 */
 	function logoutFnc() {
-		
 		
 		var allUrl = decodeURIComponent(location.href);
 		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
@@ -445,7 +442,7 @@ String passwordName = request.getParameter("passwordName");
 		
 	}
 	
-	
+	/* 글쓰기 클릭했을 경우 주소 전달 */
 	function writingFnc() {
 		
 		var allUrl = decodeURIComponent(location.href);
@@ -465,6 +462,7 @@ String passwordName = request.getParameter("passwordName");
 		
 	}
 	
+	/* 베너 클릭했을 경우 주소 전달 */
 	function clickBannerFnc() {
 		
 		var allUrl = decodeURIComponent(location.href);

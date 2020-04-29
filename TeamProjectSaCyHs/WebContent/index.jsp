@@ -189,6 +189,8 @@
 <script type="text/javascript">
 
 	window.onload = function() {
+		
+		/* 사용자 이름 기억 */
 		var allUrl = decodeURIComponent(location.href);
 		
 		if(allUrl.indexOf('=') > 0) {
@@ -203,7 +205,7 @@
 		
 	}
 	
-	/* security 버튼 */
+	/* security 버튼 클릭 시 on/off 바뀌는 함수 */
 	function securitySwitchFnc() {
 		var onOffSwitch = document.getElementById('securityOnOff');
 		if(onOffSwitch.innerHTML == 'ON') {
@@ -219,7 +221,7 @@
 	function addUnderLineFnc(hrefText) {
 		hrefText.style.textDecoration = 'underline';
 	}
-
+	/* 밑줄 제거 */
 	function removeUnderLineFnc(hrefText) {
 		hrefText.style.textDecoration = 'none';
 	}
@@ -245,7 +247,6 @@
 			} else {
 				inputText.style.backgroundColor = '#FFFFFF';
 			}
-						
 		}
 	}
 	
@@ -258,6 +259,7 @@
 		}		
 	}
 	
+	/* X를 클릭했을 때 내용 지우기 */
 	function deleteTextFnc(inputText) {
 		inputText.style.display = 'none';
 		inputText.parentNode.children[0].value = '';
@@ -289,13 +291,13 @@
 		}
 	}
 
+	/* 다른 로그인 수단에 마우스 올렸을 때 보더컬러 변경 */
 	function otherLoginFocusOutFnc(otherLoginBtn) {
 		otherLoginBtn.style.borderColor = '#E0E0E0';
 	}
 	
 	
 	/* 로그인 유효성 검사 */
-	
 	function loginBtnClickFnc() {
 		var idTextBox = document.getElementById('idText');
 		var pwdTextBox = document.getElementById('pwdText');
@@ -309,15 +311,14 @@
 		var splitUrl = variableUrl.split('&');
 		
 		
+		/* 회원가입 안했을 시 로그인 불가능 */
  		if(allUrl.indexOf('=') > 0) {
 			userId = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
 			userPwd = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);
- 			
 		} else {
  			userId = '';
 			userPwd = '';			 
 		}
-		
  		
 		if(idTextBox.value == ''){
 			alert('아이디를 입력하세요');
@@ -345,10 +346,6 @@
 			
 			return false;
 		}
-		
-
-
-		
 	}
 	
 	
