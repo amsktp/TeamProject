@@ -26,9 +26,6 @@
 	li {
 		list-style-type: none;
 	}
-	.required.checked input:focus,.required.checked input:active {
-		background-color: none !important;
-	}
 	
 	/* header */
 	#header {
@@ -90,7 +87,7 @@
 	}
 	.required.checked .inputTextWrap:after {
 		display: block;
-		background-image:url('./img/icon_chk2.png');
+		background-image:url('./img/icon_chk.png');
 		background-size: 28px;
 	}
 	.required.checked .inputText {
