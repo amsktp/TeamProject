@@ -71,7 +71,7 @@
 <script type="text/javascript">
 
 window.onload = function() {
-	
+	//이름 받아오는 부분
 	var allUrl = decodeURIComponent(location.href);
 	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
 	var splitUrl = variableUrl.split('&');
