@@ -207,6 +207,8 @@ String passwordName = request.getParameter("passwordName");
 
 <script type="text/javascript">
 
+	var viewNum = 0;
+
 
 	window.onload = function() {
 
@@ -228,8 +230,12 @@ String passwordName = request.getParameter("passwordName");
 		var allUrl = decodeURIComponent(location.href);
 		
 		if(allUrl.indexOf('=') > 0) {
-			if(allUrl.split('=').length > 4){
+			if(allUrl.split('=')[0].indexOf('http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?id') > -1){
+				
+			} else if(allUrl.split('=').length > 4){
 				addboardFnc();
+			} else if(allUrl.split('=').length > 3) {
+				keepBoardFnc();
 			}
 		}
 		
@@ -345,11 +351,16 @@ String passwordName = request.getParameter("passwordName");
 		var newTitleTd = document.createElement('td');
 		newTitleTd.setAttribute('class', 'contentsTitle');
 		
+		var newImg = document.createElement('img');
+		newImg.setAttribute('class', 'contentImg')
+		newImg.setAttribute('src', './img/new.jpg')
+		
 		var newATag = document.createElement('a');
 		newATag.setAttribute('href', '#');
 		newTitleTd.appendChild(newATag);
 		
 		newATag.innerHTML = titleName;
+		newTitleTd.appendChild(newImg);
 		newTr.appendChild(newTitleTd);
 		
 		/* 작성자 */
@@ -367,7 +378,7 @@ String passwordName = request.getParameter("passwordName");
 		var month = today.getMonth() + 1;  // 월
 		var date = today.getDate();  // 날짜
 		
-		var todayDate = year + '/' + ((month<10)?'0' + month: month) + '/' + date;
+		var todayDate = year + '/' + ((month<10)?'0' + month: month) + '/' +  ((date<10)?'0' + date: date);
 		
 		var newDateTd = document.createElement('td');
 		newDateTd.setAttribute('class', 'contentsDate');
@@ -379,7 +390,7 @@ String passwordName = request.getParameter("passwordName");
 		
 		var newViewsTd = document.createElement('td');
 		newViewsTd.setAttribute('class', 'contentsViews');
-		newViewsTd.innerHTML = '1234';
+		newViewsTd.innerHTML = viewNum;
 		
 		newTr.appendChild(newViewsTd);
 		boardTbody.insertBefore(newTr, boardTbody.children[1]);
@@ -402,6 +413,7 @@ String passwordName = request.getParameter("passwordName");
 		hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardView.jsp?';
 		hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
 		hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8") + '&';
+		
 		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
 				
 		location.href = hrefUrl;
@@ -464,6 +476,81 @@ String passwordName = request.getParameter("passwordName");
 		hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
 		
 		location.href = hrefUrl;
+	}
+	
+	function keepBoardFnc() {
+		
+		var allUrl = decodeURIComponent(location.href);
+		
+		var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
+
+		var splitUrl = variableUrl.split('&');
+		
+ 		var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
+		var titleName = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);		
+
+		var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
+			
+		
+		var mainTable = document.getElementById('mainTable');
+		
+		var boardTbody = mainTable.children[0];
+		boardTbody.removeChild(boardTbody.children[10]);
+		
+		var boardTr = boardTbody.children;
+
+		var newTr = document.createElement('tr');
+		newTr.setAttribute('class', 'tableContents');
+		
+		/* 제목 */
+		
+		var newTitleTd = document.createElement('td');
+		newTitleTd.setAttribute('class', 'contentsTitle');
+		
+		var newImg = document.createElement('img');
+		newImg.setAttribute('class', 'contentImg')
+		newImg.setAttribute('src', './img/new.jpg')
+		
+		var newATag = document.createElement('a');
+		newATag.setAttribute('href', '#');
+		newTitleTd.appendChild(newATag);
+		
+		newTitleTd.appendChild(newImg);
+		newATag.innerHTML = titleName;
+		newTr.appendChild(newTitleTd);
+		
+		/* 작성자 */
+		
+		var newWriterTd = document.createElement('td');
+		newWriterTd.setAttribute('class', 'contentsWriter');
+		
+		newWriterTd.innerHTML = userName;
+		newTr.appendChild(newWriterTd);
+		
+		/* 날짜 */
+		
+		var today = new Date();   
+		var year = today.getFullYear(); // 년도
+		var month = today.getMonth() + 1;  // 월
+		var date = today.getDate();  // 날짜
+		
+		var todayDate = year + '/' + ((month<10)?'0' + month: month) + '/' + ((date<10)?'0' + date: date);
+		
+		var newDateTd = document.createElement('td');
+		newDateTd.setAttribute('class', 'contentsDate');
+		newDateTd.innerHTML = todayDate;
+
+		newTr.appendChild(newDateTd);
+		
+		/* 조회수 */
+		
+		var newViewsTd = document.createElement('td');
+		newViewsTd.setAttribute('class', 'contentsViews');
+		newViewsTd.innerHTML = viewNum + 1;
+		
+		newTr.appendChild(newViewsTd);
+		boardTbody.insertBefore(newTr, boardTbody.children[1]);
+		
 	}
 </script>
 
