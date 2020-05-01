@@ -185,6 +185,9 @@ function viewListFnc() {
 	var variableUrl = allUrl.substring(location.href.indexOf('?')+1);
 	var splitUrl = variableUrl.split('&');
 	
+	var userName = splitUrl[0].substring(splitUrl[0].indexOf('=')+1);
+	var titleName = splitUrl[1].substring(splitUrl[1].indexOf('=')+1);		
+	
 	var personName = splitUrl[splitUrl.length-1].substring(splitUrl[splitUrl.length-1].indexOf('=')+1);	
 	if(personName.indexOf('#') != -1) {
 		personName = personName.substring(0, personName.length-1);
@@ -192,6 +195,9 @@ function viewListFnc() {
 	
 	hrefUrl = '';
 	hrefUrl += 'http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?';
+	
+	hrefUrl += 'userName=' + encodeURI(userName , "UTF-8") + '&';
+	hrefUrl += 'titleName=' + encodeURI(titleName , "UTF-8") + '&';
 	hrefUrl += 'personName=' + encodeURI(personName , "UTF-8");
 	
 	location.href = hrefUrl;
