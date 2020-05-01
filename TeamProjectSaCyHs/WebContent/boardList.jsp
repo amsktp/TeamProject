@@ -230,7 +230,9 @@ String passwordName = request.getParameter("passwordName");
 		var allUrl = decodeURIComponent(location.href);
 		
 		if(allUrl.indexOf('=') > 0) {
-			if(allUrl.split('=').length > 4){
+			if(allUrl.split('=')[0].indexOf('http://localhost:8090/TeamProjectSaCyHs/boardList.jsp?id') > -1){
+				
+			} else if(allUrl.split('=').length > 4){
 				addboardFnc();
 			} else if(allUrl.split('=').length > 3) {
 				keepBoardFnc();
@@ -349,11 +351,16 @@ String passwordName = request.getParameter("passwordName");
 		var newTitleTd = document.createElement('td');
 		newTitleTd.setAttribute('class', 'contentsTitle');
 		
+		var newImg = document.createElement('img');
+		newImg.setAttribute('class', 'contentImg')
+		newImg.setAttribute('src', './img/new.jpg')
+		
 		var newATag = document.createElement('a');
 		newATag.setAttribute('href', '#');
 		newTitleTd.appendChild(newATag);
 		
 		newATag.innerHTML = titleName;
+		newTitleTd.appendChild(newImg);
 		newTr.appendChild(newTitleTd);
 		
 		/* 작성자 */
@@ -500,10 +507,15 @@ String passwordName = request.getParameter("passwordName");
 		var newTitleTd = document.createElement('td');
 		newTitleTd.setAttribute('class', 'contentsTitle');
 		
+		var newImg = document.createElement('img');
+		newImg.setAttribute('class', 'contentImg')
+		newImg.setAttribute('src', './img/new.jpg')
+		
 		var newATag = document.createElement('a');
 		newATag.setAttribute('href', '#');
 		newTitleTd.appendChild(newATag);
 		
+		newTitleTd.appendChild(newImg);
 		newATag.innerHTML = titleName;
 		newTr.appendChild(newTitleTd);
 		
