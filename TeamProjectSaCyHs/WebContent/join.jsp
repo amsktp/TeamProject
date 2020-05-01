@@ -364,7 +364,7 @@
 	function checkRequiredFnc() {
 		var idNm = document.getElementById('idNm');
 		var pwd = document.getElementById('pwd');
-		var paswd =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+		var paswd =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
 		var pwdChk = document.getElementById('pwdChk');
 		var nm = document.getElementById('nm');
 		var year = document.getElementById('selectYear');
@@ -535,7 +535,7 @@
 	
 	/* 비밀번호 확인 */
 	function checkPwdFnc(str){
-		var paswd =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+		var paswd =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
 		if(str.value.match(paswd)) { 
 			str.parentNode.parentNode.classList.add('checked');
 			str.parentNode.parentNode.classList.remove('alert1');

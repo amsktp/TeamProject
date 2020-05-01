@@ -97,34 +97,29 @@ function writeCheck() {
 	var emailId = document.getElementById('emailValue'); 
 	var textId = document.getElementById('textValue'); 
 	var passwordId = document.getElementById('passwordValue'); 
-	
-	//이름 유효성 검사
-	if(nameId.value == '') {
-		alert("이름을 적어주세요");
-		return false;
-	} 
+	 
 	//제목 유효성 검사
 	if(titleId.value == '') { 
 		alert("제목을 적어주세요"); 
 		return false;
 	}
 	//이메일 유효성 검사
-	if(emailId.value == '') { 
+	else if(emailId.value == '') { 
 		alert("이메일을 적어주세요"); 
 		return false;
 	}
 	//내용 유효성 검사
-	if(textId.value == '') { 
+	else if(textId.value == '') { 
 		alert("내용을 적어주세요"); 
 		return false;
 	} 
 	//비밀번호 유효성 검사
-	if(passwordId.value == '') { 
+	else if(passwordId.value == '') { 
 		alert("비밀번호를 적어주세요"); 
 		return false;
 	}
 	//비밀번호 조건
-	if (passwordId.value.length < 4) {
+	else if (passwordId.value.length < 4) {
 		alert("비밀번호를 4자이상으로 적어주세요 ");
 		return false;
 	}else if (passwordId.value.length > 8) {
